@@ -9,9 +9,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GoogleApp {
+public class MetaApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GoogleApp.class, args);
+		SpringApplication.run(MetaApp.class, args);
 	}
 }
