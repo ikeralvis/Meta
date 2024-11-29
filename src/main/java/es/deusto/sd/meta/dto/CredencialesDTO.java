@@ -1,4 +1,4 @@
-package es.deusto.sd.google.dto;
+package es.deusto.sd.meta.dto;
 
 public class CredencialesDTO{
     private String email;

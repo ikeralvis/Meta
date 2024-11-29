@@ -1,4 +1,4 @@
-package es.deusto.sd.google.external;
+package es.deusto.sd.meta.external;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;

@@ -1,10 +1,10 @@
-package es.deusto.sd.google.service;
+package es.deusto.sd.meta.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.deusto.sd.google.dao.CredencialesRepository;
-import es.deusto.sd.google.entity.Credenciales;
+import es.deusto.sd.meta.dao.CredencialesRepository;
+import es.deusto.sd.meta.entity.Credenciales;
 import java.util.Optional;
 
 @Service

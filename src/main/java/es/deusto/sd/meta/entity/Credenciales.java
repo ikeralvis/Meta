@@ -1,4 +1,4 @@
-package es.deusto.sd.google.entity;
+package es.deusto.sd.meta.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,4 +1,4 @@
-package es.deusto.sd.google.facade;
+package es.deusto.sd.meta.facade;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,9 +13,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import es.deusto.sd.google.service.UsuarioService;
-import es.deusto.sd.google.dto.CredencialesDTO;
-import es.deusto.sd.google.entity.Credenciales;
+import es.deusto.sd.meta.service.UsuarioService;
+import es.deusto.sd.meta.dto.CredencialesDTO;
+import es.deusto.sd.meta.entity.Credenciales;
 
 @RestController
 @RequestMapping("/auth")
