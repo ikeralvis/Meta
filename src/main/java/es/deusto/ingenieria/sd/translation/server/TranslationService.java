@@ -13,6 +13,10 @@ public class TranslationService extends Thread {
 	private Socket tcpSocket;
 
 	private static String DELIMITER = "#";
+	private static String login = "LGIN";
+    private static String comprobarEmail = "CMPE";
+
+
 	
 	public TranslationService(Socket socket) {
 		try {
@@ -30,7 +34,15 @@ public class TranslationService extends Thread {
 			String data = this.in.readUTF();			
 			System.out.println("   - TranslationService - Received data from '" + tcpSocket.getInetAddress().getHostAddress() + ":" + tcpSocket.getPort() + "' -> '" + data + "'");					
 			
-			data = this.translate(data);
+			if (data.startsWith(login)) {
+				data = login(data.substring(login.length() + DELIMITER.length()));
+				System.out.println("   - Comprobando el email '" + data + "' -> '" + data.toUpperCase() + "'");
+			} else if (data.startsWith(comprobarEmail)) {
+				data = comprobarEmail(data.substring(comprobarEmail.length() + DELIMITER.length()));
+			} else {
+				data = "ERR";
+			}
+		
 					
 			this.out.writeUTF(data);					
 			System.out.println("   - TranslationService - Sent data to '" + tcpSocket.getInetAddress().getHostAddress() + ":" + tcpSocket.getPort() + "' -> '" + data.toUpperCase() + "'");
@@ -47,22 +59,15 @@ public class TranslationService extends Thread {
 		}
 	}
 	
-	public String translate(String msg) {
+	public String login(String msg) {
 		String translation = null;
 		
 		if (msg != null && !msg.trim().isEmpty()) {
 			try {
 				StringTokenizer tokenizer = new StringTokenizer(msg, DELIMITER);		
-				String langFrom = tokenizer.nextToken();
-				String langTo = tokenizer.nextToken();
-				String text = tokenizer.nextToken();
-				System.out.println("   - Starting translation of " + text + " from: " + langFrom + " to " + langTo);
-		
-				if (langFrom != null && langTo != null && text != null && !text.trim().isEmpty()) {
-					GoogleTranslator gt = new GoogleTranslator();
-					translation = gt.translate(langFrom, langTo, text);
-					System.out.println("   - Google Translator result: " + translation);
-				}
+				String email = tokenizer.nextToken();
+				String contraseña = tokenizer.nextToken();
+				System.out.println("   - Comprobando " + email + " y " + contraseña );
 			} catch (Exception e) {
 				System.err.println("   # TranslationService - Translation API error:" + e.getMessage());
 				translation = null;
@@ -70,5 +75,10 @@ public class TranslationService extends Thread {
 		}
 		
 		return (translation == null) ? "ERR" : "OK" + DELIMITER + translation;
+	}
+
+	public String comprobarEmail(String msg) {
+		System.out.println("   - Comprobando email " + msg);
+		return "string".equals(msg) ? "TRUE" : "FALSE";
 	}
 }

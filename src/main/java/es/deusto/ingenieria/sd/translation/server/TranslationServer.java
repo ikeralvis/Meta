@@ -8,20 +8,14 @@ public class TranslationServer {
 	private static int numClients = 0;
 	
 	public static void main(String args[]) {
-		if (args.length < 1) {
-			System.err.println(" # Usage: TranslationServer [PORT]");
-			System.exit(1);
-		}
-		
-		//args[1] = Server socket port
-		int serverPort = Integer.parseInt(args[0]);
+		int serverPort = 8083;
 		
 		try (ServerSocket tcpServerSocket = new ServerSocket(serverPort);) {
-			System.out.println(" - TranslationServer: Waiting for connections '" + tcpServerSocket.getInetAddress().getHostAddress() + ":" + tcpServerSocket.getLocalPort() + "' ...");
+			System.out.println(" - Esperando conexiones '" + tcpServerSocket.getInetAddress().getHostAddress() + ":" + tcpServerSocket.getLocalPort() + "' ...");
 			
 			while (true) {
 				new TranslationService(tcpServerSocket.accept());
-				System.out.println(" - TranslationServer: New client connection accepted. Client number: " + ++numClients);
+				System.out.println(" - Nueva conexion" + ++numClients);
 			}
 		} catch (IOException e) {
 			System.err.println("# TranslationServer: IO error:" + e.getMessage());
