@@ -1,11 +1,9 @@
-package es.deusto.ingenieria.sd.translation.server;
+package es.deusto.ingenieria.sd.META.server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 
-public class TranslationServer {
-	
-	private static int numClients = 0;
+public class METAServer {
 	
 	public static void main(String args[]) {
 		int serverPort = 8083;
@@ -14,11 +12,11 @@ public class TranslationServer {
 			System.out.println(" - Esperando conexiones '" + tcpServerSocket.getInetAddress().getHostAddress() + ":" + tcpServerSocket.getLocalPort() + "' ...");
 			
 			while (true) {
-				new TranslationService(tcpServerSocket.accept());
-				System.out.println(" - Nueva conexion" + ++numClients);
+				new METAService(tcpServerSocket.accept());
+				System.out.println(" - Nueva conexion");
 			}
 		} catch (IOException e) {
-			System.err.println("# TranslationServer: IO error:" + e.getMessage());
+			System.err.println("#Error E/S" + e.getMessage());
 		}
 	}
 }
