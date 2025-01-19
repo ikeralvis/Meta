@@ -105,6 +105,7 @@ public class METAService extends Thread {
 		this.usuarios.put("cristiano.ronald@soccer.com", "1234");
 		this.usuarios.put("mikel@mikel.com", "1234");
 		this.usuarios.put("iker@iker.com", "1234");
+		this.usuarios.put("roberto@prueba.com", "1234");
 		logger.info("Usuarios cargados");
 
 	}
